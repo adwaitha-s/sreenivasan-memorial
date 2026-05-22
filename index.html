@@ -183,6 +183,7 @@
     display: block;
     filter: grayscale(10%);
   }
+  .gallery-item { cursor: zoom-in; }
   .gallery-caption {
     font-family: var(--sans);
     font-size: 13px;
@@ -190,6 +191,37 @@
     padding: 0.6rem 0.8rem;
     line-height: 1.4;
   }
+
+  /* ---- LIGHTBOX ---- */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.88);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  #lightbox.hidden { display: none; }
+  #lightbox-content {
+    position: relative; max-width: 90vw;
+    cursor: default; text-align: center;
+  }
+  #lightbox-content img {
+    max-width: 90vw; max-height: 82vh;
+    object-fit: contain; display: block;
+    border-radius: 3px; margin: 0 auto;
+    filter: grayscale(10%);
+  }
+  #lightbox-caption {
+    color: rgba(255,255,255,0.85);
+    font-family: var(--sans); font-size: 14px;
+    padding: 0.75rem 1rem 0; line-height: 1.5;
+  }
+  #lightbox-close {
+    position: absolute; top: -2.2rem; right: 0;
+    background: none; border: none; color: #fff;
+    font-size: 1.8rem; line-height: 1; cursor: pointer;
+    opacity: 0.6; padding: 0;
+  }
+  #lightbox-close:hover { opacity: 1; }
 
   /* ---- CEREMONY TABLE ---- */
   .ceremony-grid {
@@ -449,6 +481,19 @@
         } catch { return null; }
       }));
 
+      // Build lightbox
+      const lb = document.createElement('div');
+      lb.id = 'lightbox'; lb.className = 'hidden';
+      lb.innerHTML = '<div id="lightbox-content"><button id="lightbox-close">&#215;</button><img id="lightbox-img"><p id="lightbox-caption"></p></div>';
+      document.body.appendChild(lb);
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCap = document.getElementById('lightbox-caption');
+      const closeLb = () => lb.classList.add('hidden');
+      lb.addEventListener('click', closeLb);
+      document.getElementById('lightbox-content').addEventListener('click', e => e.stopPropagation());
+      document.getElementById('lightbox-close').addEventListener('click', closeLb);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
       items.forEach(item => {
         if (!item) return;
         const fig = document.createElement('figure');
@@ -457,12 +502,13 @@
         img.src = item.url;
         img.alt = item.caption || 'Photo of Sri. K. Sreenivasan';
         fig.appendChild(img);
-        if (item.caption) {
-          const cap = document.createElement('figcaption');
-          cap.className = 'gallery-caption';
-          cap.textContent = item.caption;
-          fig.appendChild(cap);
-        }
+        fig.addEventListener('click', () => {
+          lbImg.src = item.url;
+          lbImg.alt = img.alt;
+          lbCap.textContent = item.caption || '';
+          lbCap.style.display = item.caption ? '' : 'none';
+          lb.classList.remove('hidden');
+        });
         grid.appendChild(fig);
       });
     })();
