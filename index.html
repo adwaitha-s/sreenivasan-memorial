@@ -1,644 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>In Memory of Sri. K. Sreenivasan</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In Memory of Sri. K. Sreenivasan</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --serif: Georgia, 'Times New Roman', serif;
-    --sans: system-ui, -apple-system, sans-serif;
-    --text: #1a1a1a;
-    --muted: #555;
-    --faint: #888;
-    --line: #ddd;
-    --bg: #faf9f7;
-    --card: #fff;
-    --accent: #2e4057;
-    --accent2: #4a6741;
-  }
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+      --text: #1a1a1a;
+      --muted: #555;
+      --faint: #888;
+      --line: #ddd;
+      --bg: #faf9f7;
+      --card: #fff;
+      --accent: #2e4057;
+      --accent2: #4a6741;
+    }
 
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--serif);
-    font-size: 18px;
-    line-height: 1.8;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ---- NAV ---- */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(250,249,247,0.96);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-    padding: 0.6rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--sans); font-size: 13px;
-  }
-  nav .site-name { font-weight: 600; color: var(--accent); letter-spacing: 0.02em; font-size: 17px; }
-  nav ul { list-style: none; display: flex; gap: 1.5rem; }
-  nav ul a { color: var(--muted); text-decoration: none; }
-  nav ul a:hover { color: var(--text); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.8;
+    }
 
-  /* ---- HERO ---- */
-  .hero {
-    max-width: 960px; margin: 0 auto;
-    padding: 5rem 2rem 3rem;
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-  }
-  .hero-text {
-    flex: 1;
-    text-align: left;
-  }
-  .hero-portrait {
-    width: 340px; height: auto; object-fit: contain;
-    border-radius: 4px;
-    filter: grayscale(15%);
-    flex-shrink: 0;
-  }
-  .hero .eyebrow {
-    font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--faint); margin-bottom: 0.8rem;
-  }
-  h1 {
-    font-size: 2.6rem; font-weight: 400; color: var(--accent);
-    line-height: 1.15; margin-bottom: 0.5rem;
-  }
-  .hero-dates {
-    font-family: var(--sans); font-size: 14px; color: var(--faint);
-    margin-bottom: 1.2rem; letter-spacing: 0.04em;
-  }
-  .hero-roles {
-    font-size: 15px; font-family: var(--sans); color: var(--muted);
-    line-height: 1.9; margin-bottom: 2rem;
-  }
-  .hero-divider {
-    font-size: 1.5rem; color: var(--line); margin: 2rem 0;
-    user-select: none;
-  }
-  .hero-quote {
-    font-style: italic; font-size: 1.05rem; color: var(--muted);
-    border-left: 3px solid var(--accent2); padding-left: 1.2rem;
-    text-align: left; max-width: 480px; margin: 0 0 1rem;
-  }
-  .hero-quote-attr {
-    font-family: var(--sans); font-size: 12px; color: var(--faint); text-align: left;
-    max-width: 480px; margin: 0;
-  }
+    /* ---- NAV ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 249, 247, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--sans);
+      font-size: 13px;
+    }
 
-  /* ---- MAIN CONTENT ---- */
-  .content {
-    max-width: 960px; margin: 0 auto; padding: 0 2rem 6rem;
-  }
+    nav .site-name {
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      font-size: 17px;
+    }
 
-  /* ---- SECTIONS ---- */
-  section { margin-bottom: 4rem; }
-  h2 {
-    font-size: 1.25rem; font-family: var(--sans); font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
-  }
-  h3 {
-    font-size: 1.3rem; font-weight: 400; font-style: italic; font-family: var(--sans); text-transform: capitalize;
-    color: var(--text); margin-top: 2rem; margin-bottom: 0.25rem;
-  }
-  .tribute-role {
-    font-size: 13px; color: var(--faint); font-family: var(--sans);
-    margin-bottom: 0.8rem;
-  }
-  p { margin-bottom: 1rem; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
 
-  /* ---- POSITIONS TABLE ---- */
-  .positions {
-    font-family: var(--sans); font-size: 14px;
-    border-collapse: collapse; width: 100%;
-  }
-  .positions td { padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
-  .positions td:first-child { color: var(--faint); width: 36px; font-size: 20px; padding-right: 1rem; }
-  .positions tr:last-child td { border-bottom: none; }
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+    }
 
-  /* ---- OFFICIAL CONDOLENCE ---- */
-  .official-block {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 4px; padding: 1.5rem 1.8rem;
-    font-size: 0.95rem;
-  }
-  .official-block .letterhead {
-    font-family: var(--sans); font-size: 11px; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
-    border-bottom: 1px solid var(--line); padding-bottom: 0.8rem;
-  }
-  .official-block .sig {
-    font-family: var(--sans); font-size: 13px; color: var(--muted);
-    margin-top: 1rem;
-  }
+    nav ul a:hover {
+      color: var(--text);
+    }
 
-  /* ---- TRIBUTE CARDS ---- */
-  .tribute {
-    border-left: 3px solid var(--line); padding-left: 1.2rem;
-    margin-bottom: 2.5rem;
-  }
-  .tribute.malayalam { font-size: 16px; line-height: 1.9; }
-  .tribute-translation {
-    margin-top: 1.5rem; padding-top: 1.2rem;
-    border-top: 1px dashed var(--line);
-    font-size: 14px; color: var(--faint); line-height: 1.8;
-  }
-  .tribute-translation p { margin: 0.5rem 0; }
-  .tribute .attr {
-    font-family: var(--sans); font-size: 12px; color: var(--faint);
-    margin-top: 0.5rem; font-style: normal;
-  }
-
-  /* ---- POEM ---- */
-  .poem {
-    font-style: italic; font-size: 1rem;
-    line-height: 2.1; text-align: center;
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 4px; padding: 2rem 2.5rem;
-    margin: 0; color: var(--muted);
-  }
-  .poem-attr {
-    font-family: var(--sans); font-size: 13px; color: var(--faint);
-    text-align: center; margin-top: 1rem;
-  }
-
-  /* ---- GALLERY ---- */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-  .gallery-item {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .gallery-item img {
-    width: 100%; height: 240px;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(10%);
-  }
-  .gallery-item { cursor: zoom-in; }
-  .gallery-caption {
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--muted);
-    padding: 0.6rem 0.8rem;
-    line-height: 1.4;
-  }
-
-  /* ---- LIGHTBOX ---- */
-  #lightbox {
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.88);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; overflow-y: auto;
-  }
-  #lightbox.hidden { display: none; }
-  #lightbox-content {
-    position: relative; max-width: 90vw;
-    cursor: default; text-align: center;
-    margin: auto;
-  }
-  #lightbox-content img {
-    max-width: 90vw; max-height: 82vh;
-    object-fit: contain; display: block;
-    border-radius: 3px; margin: 0 auto;
-    filter: grayscale(10%);
-  }
-  #lightbox-caption {
-    color: rgba(255,255,255,0.85);
-    font-family: var(--sans); font-size: 14px;
-    padding: 0.75rem 1rem 0; line-height: 1.5;
-  }
-  #lightbox-close {
-    position: absolute; top: -2.2rem; right: 0;
-    background: none; border: none; color: #fff;
-    font-size: 1.8rem; line-height: 1; cursor: pointer;
-    opacity: 0.6; padding: 0;
-  }
-  #lightbox-close:hover { opacity: 1; }
-
-  /* ---- CEREMONY TABLE ---- */
-  .ceremony-grid {
-    display: grid; gap: 1px; background: var(--line);
-    border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
-    font-family: var(--sans); font-size: 15px;
-  }
-  .ceremony-row {
-    display: grid; grid-template-columns: 130px 1fr;
-    background: var(--card);
-  }
-  .ceremony-row .label {
-    background: var(--accent); color: #fff;
-    padding: 0.75rem 1rem; font-size: 13px; font-weight: 600;
-  }
-  .ceremony-row .val { padding: 0.75rem 1rem; color: var(--text); }
-  .map-link {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 13px; color: var(--accent2); text-decoration: none;
-    margin-top: 0.5rem;
-  }
-  .map-link:hover { text-decoration: underline; }
-
-  /* ---- CEREMONY CARD IMAGE ---- */
-  .ceremony-card-img {
-    display: block; margin: 1.5rem auto 0;
-    max-width: 360px; width: 100%;
-    border-radius: 4px; border: 1px solid var(--line);
-  }
-  .ceremony-card-caption {
-    font-family: var(--sans); font-size: 12px; color: var(--faint);
-    text-align: center; margin-top: 0.4rem;
-  }
-
-  /* ---- CLOSING ---- */
-  .closing {
-    text-align: center; padding: 3rem 0 2rem;
-    border-top: 1px solid var(--line);
-  }
-  .closing .closing-ml {
-    font-size: 1.3rem; font-style: italic; color: var(--accent);
-    margin-bottom: 0.5rem; font-family: var(--serif);
-  }
-  .closing .closing-en {
-    font-size: 0.95rem; color: var(--faint); font-family: var(--sans);
-  }
-  .closing .om {
-    font-size: 2rem; color: var(--accent2); margin: 1.5rem 0 0.5rem;
-  }
-  .closing .compiled {
-    font-family: var(--sans); font-size: 12px; color: var(--faint);
-    margin-top: 1.5rem; line-height: 1.6;
-  }
-
-  /* ---- FOOTER ---- */
-  footer {
-    background: var(--accent); color: rgba(255,255,255,0.55);
-    text-align: center; font-family: var(--sans); font-size: 12px;
-    padding: 1.5rem;
-  }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 768px) {
+    /* ---- HERO ---- */
     .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 3rem 1.5rem;
-      gap: 2rem;
-    }
-    .hero-portrait {
-      width: 280px;
-    }
-    .hero-text {
-      text-align: center;
-    }
-    .hero-quote {
-      margin: 0 auto 1rem;
-    }
-    .hero-quote-attr {
+      max-width: 960px;
       margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
     }
-  }
 
-  @media (max-width: 600px) {
-    h1 { font-size: 1.9rem; }
-    nav ul { gap: 0.8rem; }
-    .ceremony-row { grid-template-columns: 100px 1fr; }
-  }
-</style>
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-portrait {
+      width: 340px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      filter: grayscale(15%);
+      flex-shrink: 0;
+    }
+
+    .hero .eyebrow {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-dates {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--faint);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-roles {
+      font-size: 15px;
+      font-family: var(--sans);
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-divider {
+      font-size: 1.5rem;
+      color: var(--line);
+      margin: 2rem 0;
+      user-select: none;
+    }
+
+    .hero-quote {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--muted);
+      border-left: 3px solid var(--accent2);
+      padding-left: 1.2rem;
+      text-align: left;
+      max-width: 480px;
+      margin: 0 0 1rem;
+    }
+
+    .hero-quote-attr {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--faint);
+      text-align: left;
+      max-width: 480px;
+      margin: 0;
+    }
+
+    /* ---- MAIN CONTENT ---- */
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    /* ---- SECTIONS ---- */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-family: var(--sans);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      font-family: var(--sans);
+      text-transform: capitalize;
+      color: var(--text);
+      margin-top: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tribute-role {
+      font-size: 13px;
+      color: var(--faint);
+      font-family: var(--sans);
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* ---- POSITIONS TABLE ---- */
+    .positions {
+      font-family: var(--sans);
+      font-size: 14px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .positions td {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .positions td:first-child {
+      color: var(--faint);
+      width: 36px;
+      font-size: 20px;
+      padding-right: 1rem;
+    }
+
+    .positions tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ---- OFFICIAL CONDOLENCE ---- */
+    .official-block {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1.5rem 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .official-block .letterhead {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.8rem;
+    }
+
+    .official-block .sig {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ---- TRIBUTE CARDS ---- */
+    .tribute {
+      border-left: 3px solid var(--line);
+      padding-left: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tribute.malayalam {
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .tribute-translation {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed var(--line);
+      font-size: 14px;
+      color: var(--faint);
+      line-height: 1.8;
+    }
+
+    .tribute-translation p {
+      margin: 0.5rem 0;
+    }
+
+    .tribute .attr {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--faint);
+      margin-top: 0.5rem;
+      font-style: normal;
+    }
+
+    /* ---- POEM ---- */
+    .poem {
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 2.1;
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .poem-attr {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--faint);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ---- GALLERY ---- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(10%);
+    }
+
+    .gallery-item {
+      cursor: zoom-in;
+    }
+
+    .gallery-caption {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      padding: 0.6rem 0.8rem;
+      line-height: 1.4;
+    }
+
+    /* ---- LIGHTBOX ---- */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow-y: auto;
+    }
+
+    #lightbox.hidden {
+      display: none;
+    }
+
+    #lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      cursor: default;
+      text-align: center;
+      margin: auto;
+    }
+
+    #lightbox-content img {
+      max-width: 90vw;
+      max-height: 82vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 3px;
+      margin: 0 auto;
+      filter: grayscale(10%);
+    }
+
+    #lightbox-caption {
+      color: rgba(255, 255, 255, 0.85);
+      font-family: var(--sans);
+      font-size: 14px;
+      padding: 0.75rem 1rem 0;
+      line-height: 1.5;
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: -2.2rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.6;
+      padding: 0;
+    }
+
+    #lightbox-close:hover {
+      opacity: 1;
+    }
+
+    /* ---- CEREMONY TABLE ---- */
+    .ceremony-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: var(--sans);
+      font-size: 15px;
+    }
+
+    .ceremony-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      background: var(--card);
+    }
+
+    .ceremony-row .label {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .ceremony-row .val {
+      padding: 0.75rem 1rem;
+      color: var(--text);
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--accent2);
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- CEREMONY CARD IMAGE ---- */
+    .ceremony-card-img {
+      display: block;
+      margin: 1.5rem auto 0;
+      max-width: 360px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+
+    .ceremony-card-caption {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--faint);
+      text-align: center;
+      margin-top: 0.4rem;
+    }
+
+    /* ---- CLOSING ---- */
+    .closing {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .closing .closing-ml {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-family: var(--serif);
+    }
+
+    .closing .closing-en {
+      font-size: 0.95rem;
+      color: var(--faint);
+      font-family: var(--sans);
+    }
+
+    .closing .om {
+      font-size: 2rem;
+      color: var(--accent2);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .closing .compiled {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--faint);
+      margin-top: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--accent);
+      color: rgba(255, 255, 255, 0.55);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 12px;
+      padding: 1.5rem;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+      }
+
+      .hero-portrait {
+        width: 280px;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-quote {
+        margin: 0 auto 1rem;
+      }
+
+      .hero-quote-attr {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      nav ul {
+        gap: 0.8rem;
+      }
+
+      .ceremony-row {
+        grid-template-columns: 100px 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <span class="site-name">Sri. K. Sreenivasan &nbsp;·&nbsp; 1941–2026</span>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#condolence">Condolence</a></li>
-    <li><a href="#poem">Poem</a></li>
-    <li><a href="#tributes">Tributes</a></li>
-    <li><a href="#memories">Memories</a></li>
-    <li><a href="#events">Events</a></li>
-  </ul>
-</nav>
+  <nav>
+    <span class="site-name">Sri. K. Sreenivasan &nbsp;·&nbsp; 1941–2026</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#condolence">Condolence</a></li>
+      <li><a href="#poem">Poem</a></li>
+      <li><a href="#tributes">Tributes</a></li>
+      <li><a href="#memories">Memories</a></li>
+      <li><a href="#events">Events</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <img class="hero-portrait" src="hero.jpg" alt="Portrait of Sri. K. Sreenivasan">
-  <div class="hero-text">
-    <p class="eyebrow">In loving memory of</p>
-  <h1>Sri. K. Sreenivasan</h1>
-  <p class="hero-dates">1941 &nbsp;–&nbsp; 2026</p>
-  <div class="hero-roles">
-    General Secretary, All Kerala Bank Retirees Federation<br>
-    Former National Chairman, All India Bank Retirees Federation<br>
-    National Asst. Secretary, All India Bank Employees Association
+  <!-- HERO -->
+  <div class="hero">
+    <img class="hero-portrait" src="hero.jpg" alt="Portrait of Sri. K. Sreenivasan">
+    <div class="hero-text">
+      <p class="eyebrow">In loving memory of</p>
+      <h1>Sri. K. Sreenivasan</h1>
+      <p class="hero-dates">1941 &nbsp;–&nbsp; 2026</p>
+      <div class="hero-roles">
+        General Secretary, All Kerala Bank Retirees Federation<br>
+        National Chairman, All India Bank Retirees Federation<br>
+        National Asst. Secretary, All India Bank Employees Association
+      </div>
+      <blockquote class="hero-quote">
+        ശ്രീനിവാസൻ സർ മരിക്കുന്നില്ല, നമ്മളിലൂടെ എന്നും ജീവിക്കും.
+      </blockquote>
+      <p class="hero-quote-attr">Sreenivasan Sir does not die — he shall live on through us, always.</p>
+    </div>
   </div>
-  <blockquote class="hero-quote">
-    ശ്രീനിവാസൻ സർ മരിക്കുന്നില്ല, നമ്മളിലൂടെ എന്നും ജീവിക്കും.
-  </blockquote>
-  <p class="hero-quote-attr">Sreenivasan Sir does not die — he shall live on through us, always.</p>
-  </div>
-</div>
 
-<div class="content">
+  <div class="content">
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About</h2>
-    <p>Sri. K. Sreenivasan (1941–2026) gave more than five decades of his life to the cause of bank workers across India. A man of deep conviction and quiet strength, he served employees and retirees alike with a dedication that left an enduring mark on the labour movement — and on the many lives he touched along the way.</p>
-    <p>One of the tallest and most respected leaders of the bank retirees' movement in India, he served his colleagues — active and retired — with unwavering dedication for over five decades. His contribution to the cause of bank retirees was invaluable and will always be remembered with gratitude.</p>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About</h2>
+      <p>Sri. K. Sreenivasan (1941–2026) gave more than five decades of his life to the cause of bank workers across
+        India. A man of deep conviction and quiet strength, he served employees and retirees alike with a dedication
+        that left an enduring mark on the labour movement — and on the many lives he touched along the way.</p>
+      <p>One of the tallest and most respected leaders of the bank retirees' movement in India, he served his colleagues
+        — active and retired — with unwavering dedication for over five decades. His contribution to the cause of bank
+        retirees was invaluable and will always be remembered with gratitude.</p>
 
-    <h3>Positions held</h3>
-    <table class="positions">
-      <tr><td>▸</td><td>General Secretary, All Kerala Bank Retirees Federation (AKBRF)</td></tr>
-      <tr><td>▸</td><td>National Chairman, All India Bank Retirees Federation (AIBRF)</td></tr>
-      <tr><td>▸</td><td>National Asst. Secretary, All India Bank Employees Association (AIBEA)</td></tr>
-      <tr><td>▸</td><td>General Secretary, All Kerala Bank Employees Federation (AKBEF)</td></tr>
-      <tr><td>▸</td><td>President, SBT Employees Union</td></tr>
-    </table>
+      <h3>Positions held</h3>
+      <table class="positions">
+        <tr>
+          <td>▸</td>
+          <td>General Secretary, All Kerala Bank Retirees Federation (AKBRF)</td>
+        </tr>
+        <tr>
+          <td>▸</td>
+          <td>National Chairman, All India Bank Retirees Federation (AIBRF)</td>
+        </tr>
+        <tr>
+          <td>▸</td>
+          <td>National Asst. Secretary, All India Bank Employees Association (AIBEA)</td>
+        </tr>
+        <tr>
+          <td>▸</td>
+          <td>General Secretary, All Kerala Bank Employees Federation (AKBEF)</td>
+        </tr>
+        <tr>
+          <td>▸</td>
+          <td>President, SBT Employees Union</td>
+        </tr>
+      </table>
 
-    <h3 style="margin-top:2rem;">A life of service</h3>
-    <p>He began his union career as an employee of the State Bank of Travancore (SBT), rising through the ranks to lead the bank employees' movement in Kerala. As AIBEA Assistant Secretary, he participated in numerous bilateral negotiations with the Indian Banks' Association. He was among the signatories to the landmark <strong>7th Bipartite Settlement</strong>, alongside Comrades N. Sampath and Tarakeshwar Chakravarti.</p>
-    <p>He played a key role in agitations at Gramin Bank, Federal Bank, KDCC Bank, and Nedungadi Bank. His contributions in <strong>introducing pension</strong> in commercial banks and <strong>computerising</strong> commercial banks remain historic milestones. He led the charge when bank employees fought to secure pension rights — and continued that fight as a retiree.</p>
-    <p>After retiring from SBT in 2001, he dedicated himself fully to the bank retirees' movement. His leadership of AKBRF became a model for other states. He organised private sector bank retirees under the AIBRF banner, built the AKBEF headquarters near the KSRTC Bus Stand in Ernakulam, and established the AKBRF state committee office at North Ernakulam Railway Station. During the COVID-19 pandemic, he kept the organisational leadership active through continuous online expert-led programmes — widely noticed at the national level.</p>
+      <h3 style="margin-top:2rem;">A life of service</h3>
+      <p>He began his union career as an employee of the State Bank of Travancore (SBT), rising through the ranks to
+        lead the bank employees' movement in Kerala. As AIBEA Assistant Secretary, he participated in numerous bilateral
+        negotiations with the Indian Banks' Association. He was among the signatories to the landmark <strong>7th
+          Bipartite Settlement</strong>, alongside Comrades N. Sampath and Tarakeshwar Chakravarti.</p>
+      <p>He played a key role in agitations at Gramin Bank, Federal Bank, KDCC Bank, and Nedungadi Bank. His
+        contributions in <strong>introducing pension</strong> in commercial banks and <strong>computerising</strong>
+        commercial banks remain historic milestones. He led the charge when bank employees fought to secure pension
+        rights — and continued that fight as a retiree.</p>
+      <p>After retiring from SBT in 2001, he dedicated himself fully to the bank retirees' movement. His leadership of
+        AKBRF became a model for other states. He organised private sector bank retirees under the AIBRF banner, built
+        the AKBEF headquarters near the KSRTC Bus Stand in Ernakulam, and established the AKBRF state committee office
+        at North Ernakulam Railway Station. During the COVID-19 pandemic, he kept the organisational leadership active
+        through continuous online expert-led programmes — widely noticed at the national level.</p>
 
-    <h3>Family</h3>
-    <p>He is survived by his wife <strong>Omana</strong>, son <strong>Anoop</strong> (US), daughter <strong>Anooja</strong> (Bangalore), daughter-in-law <strong>Brinda</strong> (US), and son-in-law <strong>Bibin</strong> (Bangalore).</p>
-  </section>
+      <h3>Family</h3>
+      <p>He is survived by his wife <strong>Omana</strong>, son <strong>Anoop</strong> (US), daughter
+        <strong>Anooja</strong> (Bangalore), daughter-in-law <strong>Brinda</strong> (US), and son-in-law
+        <strong>Bibin</strong> (Bangalore).</p>
+    </section>
 
-  <!-- OFFICIAL CONDOLENCE -->
-  <section id="condolence">
-    <h2>Official condolence — AIBRF</h2>
-    <div class="official-block">
-      <div class="letterhead">All India Bank Retirees' Federation (Regd.) · Ref No. 2026/0161 · 10 May 2026</div>
-      <p>It is with profound grief and deep sorrow that we inform you of the sad demise of Shri K. Sreenivasan, former Chairman of AIBRF and General Secretary of the All Kerala Bank Retirees' Federation (AKBRF), who passed away on 10th May 2026, in Bangalore, at the age of 85 years.</p>
-      <p>Shri K. Sreenivasan was one of the tallest and most respected leaders of the bank retirees' movement in India. He commanded immense respect not only among bank retirees in Kerala but throughout the country. His contribution to the cause of bank retirees was invaluable and will always be remembered with gratitude.</p>
-      <p>He also served with distinction as General Secretary of the All Kerala Bank Employees' Union for several years and played a pivotal role in strengthening the trade union movement.</p>
-      <p>The passing away of Shri Sreenivasan is a great and irreparable loss to AIBRF and to the entire bank retirees' movement in India. His dedication, leadership, vision, and commitment to the welfare of retirees will continue to inspire us for years to come.</p>
-      <p>The entire AIBRF family mourns his demise and conveys its heartfelt condolences to the bereaved family members. We pray to the Almighty to grant eternal peace to the departed soul and strength and courage to the family to bear this irreparable loss.</p>
-      <p><strong>Om Shanti.</strong></p>
-      <div class="sig">— S. C. Jain, General Secretary, All India Bank Retirees' Federation</div>
-    </div>
-  </section>
-
-  <!-- POEM -->
-  <section id="poem">
-    <h2>Memorial poem · സ്മരണാഞ്ജലി</h2>
-    <blockquote class="poem">
-      സൗമ്യസുസ്മിത ഭാവത്തിൻ<br>
-      സാമ്യസുസ്ഥിര നാമധേയം,<br>
-      ശ്രീനിവാസനാം സൂര്യൻ<br>
-      അസ്തമിച്ചകന്നു പോയി…<br><br>
-      ആ ദീപ്തകിരണങ്ങളിൽ<br>
-      സമരമണ്ഡലങ്ങളിലേറെ<br>
-      ദശകങ്ങൾ നമ്മളൊന്നായ്<br>
-      കൈകോർത്തു മുന്നേറി.<br><br>
-      ഇന്നു നാമിരുളിലായെങ്കിലും<br>
-      ആ വെളിച്ചം മായുകയില്ല,<br>
-      ഹൃദയങ്ങളിൽ തെളിഞ്ഞീടും<br>
-      അവിടുത്തെ സ്നേഹസ്പർശം.<br><br>
-      സ്മൃതിയായ് ചക്രവാളത്തിൽ,<br>
-      ഭദ്രദീപമായ് ജ്വലിക്കുന്ന<br>
-      മുദ്രകളേറെ ത്യാഗ ജീവിത<br>
-      പഥത്തിൽ ചാർത്തിയ ഭവാൻ.<br><br>
-      മാതൃകയായും കൈത്താങ്ങായും,<br>
-      മൗനത്തിൽ ആശ്വാസമായും,<br>
-      കർമ്മപഥത്തിൽ പ്രചോദനമായി<br>
-      എന്നുമുണർവ്വായ് നിന്നു.<br><br>
-      വേദന പെയ്യുന്നോരീ നേരം<br>
-      ഹൃദയം തരിച്ചു നിൽക്കുന്നു.<br>
-      പറയാതെ നൽകിയ സ്നേഹം,<br>
-      പിരിയാതെ നിന്ന കരുതൽ—<br>
-      ഓർമ്മകളായ് കണ്ണീരിലൂടെ<br>
-      ഇന്നും നമ്മെ വിളിക്കുന്നു.<br><br>
-      കരുതുന്നു ഹൃദയത്തിൽ<br>
-      കണ്ണുനീർപ്പൂക്കൾ ധന്യ<br>
-      സ്മരണാഞ്ജലിയായ്…<br>
-      നിത്യ സ്മൃതിയായനശ്വരം<br>
-      നമ്മെ നയിച്ചീടട്ടെ എന്നും
-    </blockquote>
-    <p class="poem-attr">— രാമകൃഷ്ണൻ കണ്ണോം &nbsp;·&nbsp; Presented at the condolence meeting in Kannur</p>
-  </section>
-
-  <!-- TRIBUTES -->
-  <section id="tributes">
-    <h2>Tributes &amp; condolences</h2>
-
-    <h3>Selvin John</h3>
-    <p class="tribute-role">AKBRF Idukki District Secretary</p>
-    <div class="tribute">
-      <p>My association with Sreenivasan Sir began in 1989, when I was the district Vice Chairman of AKBEF. He was always a role model and guide for me in organisational activities. His advice and counsel will continue as a guiding light in my work ahead.</p>
-      <p>He had a special love and regard for Idukki district. It was he who inaugurated the AIBEA Bhavan at Thodupuzha. He fought for pension updation for years without seeing the fruit of that struggle.</p>
-      <p>His passing is an irreparable loss to the bank retirees' movement. No one can replace Sreenivasan Sir today.</p>
-      <p class="attr">— ആദരാഞ്ജലി, Selvin John</p>
-    </div>
-
-    <h3>Basil Antony</h3>
-    <p class="tribute-role">President, SIBRSA</p>
-    <div class="tribute">
-      <p>So shocking to hear the news — it is indeed a sad day to the bank employees and retirees alike. Com. Sreenivasan dedicated his entire life to the cause of bank employees and retirees. He is a towering figure and his name will be ever remembered in the trade union movement of bank employees and retirees. Heartfelt condolences to the bereaved family.</p>
-    </div>
-
-    <h3>S. C. Jain</h3>
-    <p class="tribute-role">General Secretary, AIBRF</p>
-    <div class="tribute">
-      <p>Demise of Respected Sreenivasan Sir is shocking and unbearable news for me. He was ideal and an inspiring force for all of us in our movement. I do not have adequate words to express my grief. I was lucky to meet him in Bangalore recently but with no clue that it would be the last darshan. Bank retiree movement has lost a towering leader.</p>
-      <p class="attr">— Om Shanti</p>
-    </div>
-
-    <h3>Kasaragod District Committee, AKBRF</h3>
-    <p class="tribute-role">K. V. Gangadharan, District Secretary</p>
-    <div class="tribute">
-      <p>Com. Sreenivasan is no more with us. The light has gone. He was a towering personality, who passed away at the age of 85 from his daughter's house at Bangalore.</p>
-      <p>He worked tirelessly, utilising his full ability to protect and help bank employees at large. During agitations in Gramin Bank, Federal Bank, KDCC Bank, and Nedungadi Bank, he played a key role. His contributions in introducing pension in commercial banks and in introducing computers in commercial banks will be remembered forever. He was there with Sampath and Tharak to sign the 7th Bipartite settlement.</p>
-      <p>After retirement he worked for the All India Bank Retirees Federation, serving as All India Chairman and Kerala State General Secretary until his last day. It was he who was behind formulating our demands. He built the AKBEF state committee office at South Ernakulam and the AKBRF office at North Ernakulam. He also gave one lakh rupees from the AKBRF fund — with Central Committee approval — to the Solace Charity Organisation. Such was his generosity.</p>
-      <p>The Kasaragod District Committee met on 13 May 2026 and paid homage to Com. Sreenivasan. The meeting was chaired by President Madhava Bhat. District Secretary K. V. Gangadharan spoke. Giridhar Raghavan, Karunakaran, Suresh T, Madhavan Nair, and Damodaran participated in the discussion.</p>
-    </div>
-
-    <h3>HDFC Bank Retirees' Association</h3>
-    <div class="tribute">
-      <p>Kerala's bank employees and retirees looked up to Sreenivasan Sir as a pride and beacon. His contributions to AIBEA and AKBRF in bringing them to their current stature are immeasurable. We shall move forward on the path he showed, through his memories.</p>
-    </div>
-
-    <h3>AKBRF Pathanamthitta District Committee</h3>
-    <p class="tribute-role">Jos George, District Secretary</p>
-    <div class="tribute">
-      <p>The AKBRF Pathanamthitta District Committee held a condolence meeting on 15 May 2026 at the Bank Employees Society, Pathanamthitta, chaired by District Chairman John Philippose. Members C. T. Koshi, V. Rajamohan Nair, Adv. Yohannan Konnayil, Thomas Varghese, K. N. Bhaskaran, R. Sashikumar, and others spoke in tribute. A condolence resolution was adopted and sent to the family.</p>
-    </div>
-
-    <!-- MALAYALAM TRIBUTES -->
-    <h2 style="margin-top:3rem;">Malayalam tributes · മലയാളം</h2>
-
-    <div class="tribute malayalam">
-      <p>ഇന്ത്യയിലെ ഏറ്റവും വലിയ ബാങ്ക് റിട്ടയേറീസ് പ്രസ്ഥാനമായ AIBRF ന്റെ സമുന്നതനായ നേതാവും ഓൾ കേരള ബാങ്ക് റിട്ടയേറീസ് ഫെഡറേഷൻ ജനറൽ സെക്രട്ടറിയുമായ പ്രിയപ്പെട്ട ശ്രീനിവാസൻ സാറിന്റെ വിയോഗ വാർത്ത തികച്ചും ഞെട്ടലോടെയാണ് ഇന്ന് വൈകുന്നേരം അറിഞ്ഞത്.</p>
-      <p>ഇന്നത്തെ നിലയിൽ ബാങ്ക് റിട്ടയേറീസ് പ്രസ്ഥാനത്തെ സംഘടിപ്പിക്കുന്നതിലും വളർത്തുന്നതിലും അദ്ദേഹം വഹിച്ച പങ്ക് വളരെ വലുതാണ്. 1989 ൽ ഞാൻ AKBEF ന്റെ ജില്ലാ വൈസ് ചെയർമാനായിരുന്ന കാലം മുതൽ ശ്രീനിവാസൻ സാറുമായുള്ള എന്റെ ബന്ധം തുടങ്ങുന്നത്. എന്നും എപ്പോഴും സംഘടനാ പ്രവർത്തനരംഗത്തു എനിക്കു അദ്ദേഹം മാതൃകയും വഴികാട്ടിയുമായിരുന്നു.</p>
-      <p>ശ്രീനിവാസൻ സർ മരിക്കുന്നില്ല, നമ്മളിലൂടെ എന്നും ജീവിക്കും.</p>
-      <div class="tribute-translation">
-        <p>The news of the passing of dear Sreenivasan Sir — eminent leader of AIBRF, India's largest bank retirees movement, and General Secretary of the All Kerala Bank Retirees Federation — came as a complete shock this evening.</p>
-        <p>His role in organising and nurturing the bank retirees movement to its present standing is immense. My association with Sreenivasan Sir began in 1989, when I was District Vice Chairman of AKBEF. In every aspect of organisational work, he was always my model and guiding light.</p>
-        <p>Sreenivasan Sir does not die — he shall live on through us, always.</p>
+    <!-- OFFICIAL CONDOLENCE -->
+    <section id="condolence">
+      <h2>Official condolence — AIBRF</h2>
+      <div class="official-block">
+        <div class="letterhead">All India Bank Retirees' Federation (Regd.) · Ref No. 2026/0161 · 10 May 2026</div>
+        <p>It is with profound grief and deep sorrow that we inform you of the sad demise of Shri K. Sreenivasan, former
+          Chairman of AIBRF and General Secretary of the All Kerala Bank Retirees' Federation (AKBRF), who passed away
+          on 10th May 2026, in Bangalore, at the age of 85 years.</p>
+        <p>Shri K. Sreenivasan was one of the tallest and most respected leaders of the bank retirees' movement in
+          India. He commanded immense respect not only among bank retirees in Kerala but throughout the country. His
+          contribution to the cause of bank retirees was invaluable and will always be remembered with gratitude.</p>
+        <p>He also served with distinction as General Secretary of the All Kerala Bank Employees' Union for several
+          years and played a pivotal role in strengthening the trade union movement.</p>
+        <p>The passing away of Shri Sreenivasan is a great and irreparable loss to AIBRF and to the entire bank
+          retirees' movement in India. His dedication, leadership, vision, and commitment to the welfare of retirees
+          will continue to inspire us for years to come.</p>
+        <p>The entire AIBRF family mourns his demise and conveys its heartfelt condolences to the bereaved family
+          members. We pray to the Almighty to grant eternal peace to the departed soul and strength and courage to the
+          family to bear this irreparable loss.</p>
+        <p><strong>Om Shanti.</strong></p>
+        <div class="sig">— S. C. Jain, General Secretary, All India Bank Retirees' Federation</div>
       </div>
-      <p class="attr">— സെൽവിൻ ജോൺ, AKBRF ഇടുക്കി ജില്ലാ സെക്രട്ടറി</p>
-    </div>
+    </section>
 
-    <div class="tribute malayalam">
-      <p>ആൾ ഇന്ത്യാ ബേങ്ക് റിട്ടയറീസ് ഫെഡറേഷൻ മുൻ ദേശീയ ചെയർമാനും ആൾ കേരളാ ബേങ്ക് റിട്ടയറീസ് ഫെഡറേഷൻ ജനറൽ സെക്രട്ടറിയുമായ സ: കെ. ശ്രീനിവാസന്റെ വിയോഗം അത്യന്തം ദു:ഖകരമാണ്. AKBRF ജനറൽ സെക്രട്ടറി എന്ന നിലയിലും AIBRF ചെയർമാൻ എന്ന നിലയിലും നമ്മുടെ സംഘടനാ പ്രവർത്തനങ്ങളിൽ താങ്ങും തണലും വഴി കാട്ടിയുമായിരുന്നു സ: ശ്രീനിവാസൻ. അദ്ദേഹത്തിന്റെ വേർപാടിൽ KGBRA അഗാധമായ ദുഖം രേഖപ്പെടുത്തുന്നു. പരേതാത്മാവിന് നിത്യ ശാന്തി നേരുന്നു.</p>
-      <div class="tribute-translation">
-        <p>The passing of Comrade K. Sreenivasan — former National Chairman of the All India Bank Retirees Federation and General Secretary of the All Kerala Bank Retirees Federation — is a matter of profound sorrow. As AKBRF General Secretary and AIBRF Chairman, Comrade Sreenivasan was a pillar of support and a guiding light in our organisational work. KGBRA records its deep grief at his departure. We pray for eternal peace for his departed soul.</p>
+    <!-- POEM -->
+    <section id="poem">
+      <h2>Memorial poem · സ്മരണാഞ്ജലി</h2>
+      <blockquote class="poem">
+        സൗമ്യസുസ്മിത ഭാവത്തിൻ<br>
+        സാമ്യസുസ്ഥിര നാമധേയം,<br>
+        ശ്രീനിവാസനാം സൂര്യൻ<br>
+        അസ്തമിച്ചകന്നു പോയി…<br><br>
+        ആ ദീപ്തകിരണങ്ങളിൽ<br>
+        സമരമണ്ഡലങ്ങളിലേറെ<br>
+        ദശകങ്ങൾ നമ്മളൊന്നായ്<br>
+        കൈകോർത്തു മുന്നേറി.<br><br>
+        ഇന്നു നാമിരുളിലായെങ്കിലും<br>
+        ആ വെളിച്ചം മായുകയില്ല,<br>
+        ഹൃദയങ്ങളിൽ തെളിഞ്ഞീടും<br>
+        അവിടുത്തെ സ്നേഹസ്പർശം.<br><br>
+        സ്മൃതിയായ് ചക്രവാളത്തിൽ,<br>
+        ഭദ്രദീപമായ് ജ്വലിക്കുന്ന<br>
+        മുദ്രകളേറെ ത്യാഗ ജീവിത<br>
+        പഥത്തിൽ ചാർത്തിയ ഭവാൻ.<br><br>
+        മാതൃകയായും കൈത്താങ്ങായും,<br>
+        മൗനത്തിൽ ആശ്വാസമായും,<br>
+        കർമ്മപഥത്തിൽ പ്രചോദനമായി<br>
+        എന്നുമുണർവ്വായ് നിന്നു.<br><br>
+        വേദന പെയ്യുന്നോരീ നേരം<br>
+        ഹൃദയം തരിച്ചു നിൽക്കുന്നു.<br>
+        പറയാതെ നൽകിയ സ്നേഹം,<br>
+        പിരിയാതെ നിന്ന കരുതൽ—<br>
+        ഓർമ്മകളായ് കണ്ണീരിലൂടെ<br>
+        ഇന്നും നമ്മെ വിളിക്കുന്നു.<br><br>
+        കരുതുന്നു ഹൃദയത്തിൽ<br>
+        കണ്ണുനീർപ്പൂക്കൾ ധന്യ<br>
+        സ്മരണാഞ്ജലിയായ്…<br>
+        നിത്യ സ്മൃതിയായനശ്വരം<br>
+        നമ്മെ നയിച്ചീടട്ടെ എന്നും
+      </blockquote>
+      <p class="poem-attr">— രാമകൃഷ്ണൻ കണ്ണോം &nbsp;·&nbsp; Presented at the condolence meeting in Kannur</p>
+    </section>
+
+    <!-- TRIBUTES -->
+    <section id="tributes">
+      <h2>Tributes &amp; condolences</h2>
+
+      <h3>Selvin John</h3>
+      <p class="tribute-role">AKBRF Idukki District Secretary</p>
+      <div class="tribute">
+        <p>My association with Sreenivasan Sir began in 1989, when I was the district Vice Chairman of AKBEF. He was
+          always a role model and guide for me in organisational activities. His advice and counsel will continue as a
+          guiding light in my work ahead.</p>
+        <p>He had a special love and regard for Idukki district. It was he who inaugurated the AIBEA Bhavan at
+          Thodupuzha. He fought for pension updation for years without seeing the fruit of that struggle.</p>
+        <p>His passing is an irreparable loss to the bank retirees' movement. No one can replace Sreenivasan Sir today.
+        </p>
+        <p class="attr">— ആദരാഞ്ജലി, Selvin John</p>
       </div>
-      <p class="attr">— KP. മുഹമ്മദ്, പ്രസിഡൻറ്; കെ.ബാലകൃഷ്ണൻ, ജനറൽ സെക്രട്ടറി, KGBRA</p>
-    </div>
 
-    <div class="tribute malayalam">
-      <p>കേരളത്തിലെ ബാങ്ക് ജീവനക്കാരുടെയും റിട്ടയറീസിന്റേയും അഭിമാനമായിരുന്ന ശ്രീനിവാസൻ സാറിൻ്റെ വേർപാട് ഏറെ ആഘാതം ജനിപ്പിക്കുന്നതാണ്. കേരളത്തിലെ AIBEA യും തുടർന്ന് AKBRF ഉം ഇന്നത്തെ നിലയിലെത്തിച്ചതിൽ പരേതൻ്റെ പങ്ക് അളവറ്റതാണ്. അദ്ദേഹം കാട്ടിത്തന്ന വഴികളിലൂടെ, ഓർമ്മകളിലൂടെ, നമുക്കു മുന്നേറാം.</p>
-      <div class="tribute-translation">
-        <p>The departure of Sreenivasan Sir — the pride of Kerala's bank employees and retirees — is a severe blow. His contribution to bringing AIBEA in Kerala, and later AKBRF, to their present standing is immeasurable. Let us move forward through the paths he lit for us, carrying his memory.</p>
+      <h3>Basil Antony</h3>
+      <p class="tribute-role">President, SIBRSA</p>
+      <div class="tribute">
+        <p>So shocking to hear the news — it is indeed a sad day to the bank employees and retirees alike. Com.
+          Sreenivasan dedicated his entire life to the cause of bank employees and retirees. He is a towering figure and
+          his name will be ever remembered in the trade union movement of bank employees and retirees. Heartfelt
+          condolences to the bereaved family.</p>
       </div>
-      <p class="attr">— HDFC ബാങ്ക് റിട്ടയറീസ് അസ്സോസ്സിയേഷൻ</p>
-    </div>
 
-    <h3>ജെലിൻ കുമ്പളം</h3>
-    <p class="tribute-role">പ്രണാമം സഖാവേ</p>
-    <div class="tribute malayalam">
-      <p>ശ്രീനിവാസൻ സാറിനെ എനിക്ക് അറിയില്ലായിരുന്നു. ഇന്ത്യൻ ഓവർസീസ് ബാങ്കിൽ കയറിക്കഴിഞ്ഞാണ് എസ്ബിടിയിലെ ഇന്റർവ്യൂ വരുന്നത്... പോകണ്ടാന്നു വച്ചു, അച്ഛനോട് പറഞ്ഞു..</p>
-      <p>അച്ഛൻ CPI-യുടെ കുമ്പളം പഞ്ചായത്തിലെ ആദ്യ കാല കമ്മ്യൂണിസ്റ്റ് പ്രവർത്തകൻ! ജയിൽവാസം... ഒളി ജീവിതം... പോലീസ് മർദ്ദനം... അങ്ങനെ പല പീഡനങ്ങളും ഏറ്റിട്ടുണ്ട്. സി.അച്യുതമേനോൻ, ടി.കെ രാമകൃഷ്ണൻ ഉൾപ്പെടെ പലരും വീടിന്റെ മച്ചിൽ ഒളിച്ചു താമസിച്ചുണ്ട്.. മച്ചിൻ മുകളിൽ മർദ്ദനമേറ്റ് വരുന്ന സഖാക്കളെ ആവിയിൽ പുഴുങ്ങാനുള്ള സജ്ജീകരണങ്ങൾ ഉണ്ടായിരുന്നു.</p>
-      <p>അച്ഛന്റെ അടുപ്പക്കാരായിരുന്നു അഡ്വക്കറ്റ്: എ വി ജി നായരും ശ്രീനിവാസൻ സാറുമൊക്കെ.... എസ്ബിടിയിൽ ഇന്റവ്യൂ വന്ന കാര്യം അച്ഛനറിഞ്ഞപ്പോൾ പറഞ്ഞു: നീ അവിടെ കേറ്.... നമുക്കു പറ്റിയവർ അവിടെയുണ്ട്. അങ്ങനെ ശ്രീനിവാസൻ സാറിന്റെ ഉറപ്പോടെ എസ് ബി ടി യിൽ കേറുന്നു, ഐ ഒ ബി വിടുന്നു. യൂണിയൻ പ്രവർത്തനങ്ങളിൽ സജീവമാകുന്നു... പിന്നെ ഏതാണ്ട് മുപ്പത്തഞ്ചു വർഷത്തെ അടുപ്പം! അതിന്നും തുടരുന്നു.</p>
-      <p>ഞാൻ പ്രസംഗിക്കാനും എഴുതുവാനും പഠിക്കുന്നത് ശ്രീനിവാസൻ സാറിൽ നിന്നാണ്.. ലേബർ ലൈഫിലും മൈത്രിയിലും നിരന്തരം എഴുതി. മറ്റു പ്രസിദ്ധീകരണങ്ങളിലേയ്ക്കും കടന്നു. രണ്ടു കവിത സമാഹാരം, ഒരു സംഗീത ആൽബം, ഒരു കഥാ സമാഹാരം... ഇതിനൊക്കെ പിന്നിൽ ആ പ്രചോദനമുണ്ട്..</p>
-      <p>ഇന്ന് ശ്രീനിവാസൻ സാറിന്റെ വിയോഗ വാർത്ത കേട്ടപ്പോൾ അത് അംഗീകരിക്കാനാകാതെ നീറുമ്പോൾ കേവലാശ്വാസത്തിനായ് എടുത്തതാണി പേന! വിട പറയുന്നില്ല സഖാവേ... അങ്ങ് എന്റെ പിതാവിനൊപ്പം ചെന്നു പേരുക! ആ കാണാലോകത്തും അങ്ങയുടെ സംഘടനാ പ്രവർത്തം തുടരുക.. കാണാം നമുക്കവിടെ താമസിയാതെ....!</p>
-      <div class="tribute-translation">
-        <p>I did not know Sreenivasan Sir before joining Indian Overseas Bank. When I received the SBT interview call, my father — an early CPI worker — told me: "Go there, we have our people." With Sreenivasan Sir's assurance, I joined SBT, left IOB, and became active in the union. What followed was nearly thirty-five years of closeness.</p>
-        <p>I learned to speak and write from Sreenivasan Sir. Two poetry collections, a music album, a short-story collection — all carry his inspiration. Today, on hearing the news of his passing, I took up this pen as a feeble solace.</p>
-        <p>I do not say farewell, Comrade... Go be with my father. Continue your organisational work in that unseen world. We shall meet there soon.</p>
+      <h3>S. C. Jain</h3>
+      <p class="tribute-role">General Secretary, AIBRF</p>
+      <div class="tribute">
+        <p>Demise of Respected Sreenivasan Sir is shocking and unbearable news for me. He was ideal and an inspiring
+          force for all of us in our movement. I do not have adequate words to express my grief. I was lucky to meet him
+          in Bangalore recently but with no clue that it would be the last darshan. Bank retiree movement has lost a
+          towering leader.</p>
+        <p class="attr">— Om Shanti</p>
       </div>
-      <p class="attr">— ജെലിൻ കുമ്പളം (Jelin Kumbalam)</p>
-    </div>
-  </section>
 
-  <!-- GALLERY -->
-  <section id="memories">
-    <h2>Cherished Memories</h2>
-    <div class="gallery-grid" id="gallery-memories"></div>
-  </section>
+      <h3>Kasaragod District Committee, AKBRF</h3>
+      <p class="tribute-role">K. V. Gangadharan, District Secretary</p>
+      <div class="tribute">
+        <p>Com. Sreenivasan is no more with us. The light has gone. He was a towering personality, who passed away at
+          the age of 85 from his daughter's house at Bangalore.</p>
+        <p>He worked tirelessly, utilising his full ability to protect and help bank employees at large. During
+          agitations in Gramin Bank, Federal Bank, KDCC Bank, and Nedungadi Bank, he played a key role. His
+          contributions in introducing pension in commercial banks and in introducing computers in commercial banks will
+          be remembered forever. He was there with Sampath and Tharak to sign the 7th Bipartite settlement.</p>
+        <p>After retirement he worked for the All India Bank Retirees Federation, serving as All India Chairman and
+          Kerala State General Secretary until his last day. It was he who was behind formulating our demands. He built
+          the AKBEF state committee office at South Ernakulam and the AKBRF office at North Ernakulam. He also gave one
+          lakh rupees from the AKBRF fund — with Central Committee approval — to the Solace Charity Organisation. Such
+          was his generosity.</p>
+        <p>The Kasaragod District Committee met on 13 May 2026 and paid homage to Com. Sreenivasan. The meeting was
+          chaired by President Madhava Bhat. District Secretary K. V. Gangadharan spoke. Giridhar Raghavan, Karunakaran,
+          Suresh T, Madhavan Nair, and Damodaran participated in the discussion.</p>
+      </div>
 
-  <section id="events">
-    <h2>Memorial Events</h2>
-    <div class="gallery-grid" id="gallery-events"></div>
-  </section>
-  <script>
-    (async () => {
-      function readExifDescription(buf) {
-        const u8 = new Uint8Array(buf), dv = new DataView(buf);
-        if (dv.getUint16(0) !== 0xFFD8) return null;
-        let p = 2;
-        while (p + 4 <= u8.length) {
-          if (u8[p] !== 0xFF) break;
-          const seg = dv.getUint16(p + 2);
-          if (dv.getUint16(p) === 0xFFE1 && seg > 10 &&
-              u8[p+4]===69 && u8[p+5]===120 && u8[p+6]===105 && u8[p+7]===102 &&
-              u8[p+8]===0 && u8[p+9]===0) {
-            const t = p + 10;
-            const le = u8[t] === 0x49;
-            const r16 = o => dv.getUint16(o, le);
-            const r32 = o => dv.getUint32(o, le);
-            if (r16(t + 2) === 42) {
-              const ifd = t + r32(t + 4), n = r16(ifd);
-              for (let i = 0; i < n; i++) {
-                const e = ifd + 2 + i * 12;
-                if (r16(e) === 0x010E && r16(e + 2) === 2) {
-                  const cnt = r32(e + 4);
-                  const vp = cnt > 4 ? t + r32(e + 8) : e + 8;
-                  if (vp + cnt <= buf.byteLength) {
-                    const s = new TextDecoder().decode(u8.subarray(vp, vp + cnt - 1)).trim();
-                    if (s) return s;
+      <h3>HDFC Bank Retirees' Association</h3>
+      <div class="tribute">
+        <p>Kerala's bank employees and retirees looked up to Sreenivasan Sir as a pride and beacon. His contributions to
+          AIBEA and AKBRF in bringing them to their current stature are immeasurable. We shall move forward on the path
+          he showed, through his memories.</p>
+      </div>
+
+      <h3>AKBRF Pathanamthitta District Committee</h3>
+      <p class="tribute-role">Jos George, District Secretary</p>
+      <div class="tribute">
+        <p>The AKBRF Pathanamthitta District Committee held a condolence meeting on 15 May 2026 at the Bank Employees
+          Society, Pathanamthitta, chaired by District Chairman John Philippose. Members C. T. Koshi, V. Rajamohan Nair,
+          Adv. Yohannan Konnayil, Thomas Varghese, K. N. Bhaskaran, R. Sashikumar, and others spoke in tribute. A
+          condolence resolution was adopted and sent to the family.</p>
+      </div>
+
+      <!-- MALAYALAM TRIBUTES -->
+      <h2 style="margin-top:3rem;">Malayalam tributes · മലയാളം</h2>
+
+      <div class="tribute malayalam">
+        <p>ഇന്ത്യയിലെ ഏറ്റവും വലിയ ബാങ്ക് റിട്ടയേറീസ് പ്രസ്ഥാനമായ AIBRF ന്റെ സമുന്നതനായ നേതാവും ഓൾ കേരള ബാങ്ക്
+          റിട്ടയേറീസ് ഫെഡറേഷൻ ജനറൽ സെക്രട്ടറിയുമായ പ്രിയപ്പെട്ട ശ്രീനിവാസൻ സാറിന്റെ വിയോഗ വാർത്ത തികച്ചും ഞെട്ടലോടെയാണ്
+          ഇന്ന് വൈകുന്നേരം അറിഞ്ഞത്.</p>
+        <p>ഇന്നത്തെ നിലയിൽ ബാങ്ക് റിട്ടയേറീസ് പ്രസ്ഥാനത്തെ സംഘടിപ്പിക്കുന്നതിലും വളർത്തുന്നതിലും അദ്ദേഹം വഹിച്ച പങ്ക്
+          വളരെ വലുതാണ്. 1989 ൽ ഞാൻ AKBEF ന്റെ ജില്ലാ വൈസ് ചെയർമാനായിരുന്ന കാലം മുതൽ ശ്രീനിവാസൻ സാറുമായുള്ള എന്റെ ബന്ധം
+          തുടങ്ങുന്നത്. എന്നും എപ്പോഴും സംഘടനാ പ്രവർത്തനരംഗത്തു എനിക്കു അദ്ദേഹം മാതൃകയും വഴികാട്ടിയുമായിരുന്നു.</p>
+        <p>ശ്രീനിവാസൻ സർ മരിക്കുന്നില്ല, നമ്മളിലൂടെ എന്നും ജീവിക്കും.</p>
+        <div class="tribute-translation">
+          <p>The news of the passing of dear Sreenivasan Sir — eminent leader of AIBRF, India's largest bank retirees
+            movement, and General Secretary of the All Kerala Bank Retirees Federation — came as a complete shock this
+            evening.</p>
+          <p>His role in organising and nurturing the bank retirees movement to its present standing is immense. My
+            association with Sreenivasan Sir began in 1989, when I was District Vice Chairman of AKBEF. In every aspect
+            of organisational work, he was always my model and guiding light.</p>
+          <p>Sreenivasan Sir does not die — he shall live on through us, always.</p>
+        </div>
+        <p class="attr">— സെൽവിൻ ജോൺ, AKBRF ഇടുക്കി ജില്ലാ സെക്രട്ടറി</p>
+      </div>
+
+      <div class="tribute malayalam">
+        <p>ആൾ ഇന്ത്യാ ബേങ്ക് റിട്ടയറീസ് ഫെഡറേഷൻ മുൻ ദേശീയ ചെയർമാനും ആൾ കേരളാ ബേങ്ക് റിട്ടയറീസ് ഫെഡറേഷൻ ജനറൽ
+          സെക്രട്ടറിയുമായ സ: കെ. ശ്രീനിവാസന്റെ വിയോഗം അത്യന്തം ദു:ഖകരമാണ്. AKBRF ജനറൽ സെക്രട്ടറി എന്ന നിലയിലും AIBRF
+          ചെയർമാൻ എന്ന നിലയിലും നമ്മുടെ സംഘടനാ പ്രവർത്തനങ്ങളിൽ താങ്ങും തണലും വഴി കാട്ടിയുമായിരുന്നു സ: ശ്രീനിവാസൻ.
+          അദ്ദേഹത്തിന്റെ വേർപാടിൽ KGBRA അഗാധമായ ദുഖം രേഖപ്പെടുത്തുന്നു. പരേതാത്മാവിന് നിത്യ ശാന്തി നേരുന്നു.</p>
+        <div class="tribute-translation">
+          <p>The passing of Comrade K. Sreenivasan — former National Chairman of the All India Bank Retirees Federation
+            and General Secretary of the All Kerala Bank Retirees Federation — is a matter of profound sorrow. As AKBRF
+            General Secretary and AIBRF Chairman, Comrade Sreenivasan was a pillar of support and a guiding light in our
+            organisational work. KGBRA records its deep grief at his departure. We pray for eternal peace for his
+            departed soul.</p>
+        </div>
+        <p class="attr">— KP. മുഹമ്മദ്, പ്രസിഡൻറ്; കെ.ബാലകൃഷ്ണൻ, ജനറൽ സെക്രട്ടറി, KGBRA</p>
+      </div>
+
+      <div class="tribute malayalam">
+        <p>കേരളത്തിലെ ബാങ്ക് ജീവനക്കാരുടെയും റിട്ടയറീസിന്റേയും അഭിമാനമായിരുന്ന ശ്രീനിവാസൻ സാറിൻ്റെ വേർപാട് ഏറെ ആഘാതം
+          ജനിപ്പിക്കുന്നതാണ്. കേരളത്തിലെ AIBEA യും തുടർന്ന് AKBRF ഉം ഇന്നത്തെ നിലയിലെത്തിച്ചതിൽ പരേതൻ്റെ പങ്ക്
+          അളവറ്റതാണ്. അദ്ദേഹം കാട്ടിത്തന്ന വഴികളിലൂടെ, ഓർമ്മകളിലൂടെ, നമുക്കു മുന്നേറാം.</p>
+        <div class="tribute-translation">
+          <p>The departure of Sreenivasan Sir — the pride of Kerala's bank employees and retirees — is a severe blow.
+            His contribution to bringing AIBEA in Kerala, and later AKBRF, to their present standing is immeasurable.
+            Let us move forward through the paths he lit for us, carrying his memory.</p>
+        </div>
+        <p class="attr">— HDFC ബാങ്ക് റിട്ടയറീസ് അസ്സോസ്സിയേഷൻ</p>
+      </div>
+
+      <h3>ജെലിൻ കുമ്പളം</h3>
+      <p class="tribute-role">പ്രണാമം സഖാവേ</p>
+      <div class="tribute malayalam">
+        <p>ശ്രീനിവാസൻ സാറിനെ എനിക്ക് അറിയില്ലായിരുന്നു. ഇന്ത്യൻ ഓവർസീസ് ബാങ്കിൽ കയറിക്കഴിഞ്ഞാണ് എസ്ബിടിയിലെ ഇന്റർവ്യൂ
+          വരുന്നത്... പോകണ്ടാന്നു വച്ചു, അച്ഛനോട് പറഞ്ഞു..</p>
+        <p>അച്ഛൻ CPI-യുടെ കുമ്പളം പഞ്ചായത്തിലെ ആദ്യ കാല കമ്മ്യൂണിസ്റ്റ് പ്രവർത്തകൻ! ജയിൽവാസം... ഒളി ജീവിതം... പോലീസ്
+          മർദ്ദനം... അങ്ങനെ പല പീഡനങ്ങളും ഏറ്റിട്ടുണ്ട്. സി.അച്യുതമേനോൻ, ടി.കെ രാമകൃഷ്ണൻ ഉൾപ്പെടെ പലരും വീടിന്റെ മച്ചിൽ
+          ഒളിച്ചു താമസിച്ചുണ്ട്.. മച്ചിൻ മുകളിൽ മർദ്ദനമേറ്റ് വരുന്ന സഖാക്കളെ ആവിയിൽ പുഴുങ്ങാനുള്ള സജ്ജീകരണങ്ങൾ
+          ഉണ്ടായിരുന്നു.</p>
+        <p>അച്ഛന്റെ അടുപ്പക്കാരായിരുന്നു അഡ്വക്കറ്റ്: എ വി ജി നായരും ശ്രീനിവാസൻ സാറുമൊക്കെ.... എസ്ബിടിയിൽ ഇന്റവ്യൂ വന്ന
+          കാര്യം അച്ഛനറിഞ്ഞപ്പോൾ പറഞ്ഞു: നീ അവിടെ കേറ്.... നമുക്കു പറ്റിയവർ അവിടെയുണ്ട്. അങ്ങനെ ശ്രീനിവാസൻ സാറിന്റെ
+          ഉറപ്പോടെ എസ് ബി ടി യിൽ കേറുന്നു, ഐ ഒ ബി വിടുന്നു. യൂണിയൻ പ്രവർത്തനങ്ങളിൽ സജീവമാകുന്നു... പിന്നെ ഏതാണ്ട്
+          മുപ്പത്തഞ്ചു വർഷത്തെ അടുപ്പം! അതിന്നും തുടരുന്നു.</p>
+        <p>ഞാൻ പ്രസംഗിക്കാനും എഴുതുവാനും പഠിക്കുന്നത് ശ്രീനിവാസൻ സാറിൽ നിന്നാണ്.. ലേബർ ലൈഫിലും മൈത്രിയിലും നിരന്തരം
+          എഴുതി. മറ്റു പ്രസിദ്ധീകരണങ്ങളിലേയ്ക്കും കടന്നു. രണ്ടു കവിത സമാഹാരം, ഒരു സംഗീത ആൽബം, ഒരു കഥാ സമാഹാരം...
+          ഇതിനൊക്കെ പിന്നിൽ ആ പ്രചോദനമുണ്ട്..</p>
+        <p>ഇന്ന് ശ്രീനിവാസൻ സാറിന്റെ വിയോഗ വാർത്ത കേട്ടപ്പോൾ അത് അംഗീകരിക്കാനാകാതെ നീറുമ്പോൾ കേവലാശ്വാസത്തിനായ്
+          എടുത്തതാണി പേന! വിട പറയുന്നില്ല സഖാവേ... അങ്ങ് എന്റെ പിതാവിനൊപ്പം ചെന്നു പേരുക! ആ കാണാലോകത്തും അങ്ങയുടെ സംഘടനാ
+          പ്രവർത്തം തുടരുക.. കാണാം നമുക്കവിടെ താമസിയാതെ....!</p>
+        <div class="tribute-translation">
+          <p>I did not know Sreenivasan Sir before joining Indian Overseas Bank. When I received the SBT interview call,
+            my father — an early CPI worker — told me: "Go there, we have our people." With Sreenivasan Sir's assurance,
+            I joined SBT, left IOB, and became active in the union. What followed was nearly thirty-five years of
+            closeness.</p>
+          <p>I learned to speak and write from Sreenivasan Sir. Two poetry collections, a music album, a short-story
+            collection — all carry his inspiration. Today, on hearing the news of his passing, I took up this pen as a
+            feeble solace.</p>
+          <p>I do not say farewell, Comrade... Go be with my father. Continue your organisational work in that unseen
+            world. We shall meet there soon.</p>
+        </div>
+        <p class="attr">— ജെലിൻ കുമ്പളം (Jelin Kumbalam)</p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="memories">
+      <h2>Cherished Memories</h2>
+      <div class="gallery-grid" id="gallery-memories"></div>
+    </section>
+
+    <section id="events">
+      <h2>Memorial Events</h2>
+      <div class="gallery-grid" id="gallery-events"></div>
+    </section>
+    <script>
+      (async () => {
+        function readExifDescription(buf) {
+          const u8 = new Uint8Array(buf), dv = new DataView(buf);
+          if (dv.getUint16(0) !== 0xFFD8) return null;
+          let p = 2;
+          while (p + 4 <= u8.length) {
+            if (u8[p] !== 0xFF) break;
+            const seg = dv.getUint16(p + 2);
+            if (dv.getUint16(p) === 0xFFE1 && seg > 10 &&
+              u8[p + 4] === 69 && u8[p + 5] === 120 && u8[p + 6] === 105 && u8[p + 7] === 102 &&
+              u8[p + 8] === 0 && u8[p + 9] === 0) {
+              const t = p + 10;
+              const le = u8[t] === 0x49;
+              const r16 = o => dv.getUint16(o, le);
+              const r32 = o => dv.getUint32(o, le);
+              if (r16(t + 2) === 42) {
+                const ifd = t + r32(t + 4), n = r16(ifd);
+                for (let i = 0; i < n; i++) {
+                  const e = ifd + 2 + i * 12;
+                  if (r16(e) === 0x010E && r16(e + 2) === 2) {
+                    const cnt = r32(e + 4);
+                    const vp = cnt > 4 ? t + r32(e + 8) : e + 8;
+                    if (vp + cnt <= buf.byteLength) {
+                      const s = new TextDecoder().decode(u8.subarray(vp, vp + cnt - 1)).trim();
+                      if (s) return s;
+                    }
                   }
                 }
               }
             }
+            p += 2 + seg;
           }
-          p += 2 + seg;
+          return null;
         }
-        return null;
-      }
 
-      // Build lightbox
-      const lb = document.createElement('div');
-      lb.id = 'lightbox'; lb.className = 'hidden';
-      lb.innerHTML = '<div id="lightbox-content"><button id="lightbox-close">&#215;</button><img id="lightbox-img"><p id="lightbox-caption"></p></div>';
-      document.body.appendChild(lb);
-      const lbImg = document.getElementById('lightbox-img');
-      const lbCap = document.getElementById('lightbox-caption');
-      const closeLb = () => lb.classList.add('hidden');
-      lb.addEventListener('click', closeLb);
-      document.getElementById('lightbox-content').addEventListener('click', e => e.stopPropagation());
-      document.getElementById('lightbox-close').addEventListener('click', closeLb);
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+        // Build lightbox
+        const lb = document.createElement('div');
+        lb.id = 'lightbox'; lb.className = 'hidden';
+        lb.innerHTML = '<div id="lightbox-content"><button id="lightbox-close">&#215;</button><img id="lightbox-img"><p id="lightbox-caption"></p></div>';
+        document.body.appendChild(lb);
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCap = document.getElementById('lightbox-caption');
+        const closeLb = () => lb.classList.add('hidden');
+        lb.addEventListener('click', closeLb);
+        document.getElementById('lightbox-content').addEventListener('click', e => e.stopPropagation());
+        document.getElementById('lightbox-close').addEventListener('click', closeLb);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-      async function renderGallery(folder, gridId) {
-        let entries;
-        try { entries = await fetch(folder + '/gallery.json').then(r => r.json()); }
-        catch { return; }
-        const grid = document.getElementById(gridId);
-        entries.forEach(entry => {
-          const name = typeof entry === 'string' ? entry : entry.src;
-          const jsonCaption = typeof entry === 'object' ? entry.caption : null;
-          const caption = jsonCaption || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
-          const url = folder + '/' + name;
-          const fig = document.createElement('figure');
-          fig.className = 'gallery-item';
-          const img = document.createElement('img');
-          img.src = url;
-          img.loading = 'lazy';
-          img.alt = caption || 'Photo of Sri. K. Sreenivasan';
-          fig.appendChild(img);
-          fig.addEventListener('click', () => {
-            lbImg.src = url;
-            lbImg.alt = img.alt;
-            lbCap.innerHTML = caption
-              ? caption
-                  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                  .replace(/\*(.+?)\*/g,'<strong>$1</strong>')
-                  .replace(/\n/g,'<br>')
-              : '';
-            lbCap.style.display = caption ? '' : 'none';
-            lb.classList.remove('hidden');
+        async function renderGallery(folder, gridId) {
+          let entries;
+          try { entries = await fetch(folder + '/gallery.json').then(r => r.json()); }
+          catch { return; }
+          const grid = document.getElementById(gridId);
+          entries.forEach(entry => {
+            const name = typeof entry === 'string' ? entry : entry.src;
+            const jsonCaption = typeof entry === 'object' ? entry.caption : null;
+            const caption = jsonCaption || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
+            const url = folder + '/' + name;
+            const fig = document.createElement('figure');
+            fig.className = 'gallery-item';
+            const img = document.createElement('img');
+            img.src = url;
+            img.loading = 'lazy';
+            img.alt = caption || 'Photo of Sri. K. Sreenivasan';
+            fig.appendChild(img);
+            fig.addEventListener('click', () => {
+              lbImg.src = url;
+              lbImg.alt = img.alt;
+              lbCap.innerHTML = caption
+                ? caption
+                  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                  .replace(/\*(.+?)\*/g, '<strong>$1</strong>')
+                  .replace(/\n/g, '<br>')
+                : '';
+              lbCap.style.display = caption ? '' : 'none';
+              lb.classList.remove('hidden');
+            });
+            grid.appendChild(fig);
           });
-          grid.appendChild(fig);
-        });
-      }
+        }
 
-      renderGallery('images/memories', 'gallery-memories');
-      renderGallery('images/events', 'gallery-events');
-    })();
-  </script>
+        renderGallery('images/memories', 'gallery-memories');
+        renderGallery('images/events', 'gallery-events');
+      })();
+    </script>
 
 
 
-  <!-- CLOSING -->
-  <div class="closing">
-    <p class="compiled">
-      This page was compiled from tributes, press notices, and ceremony information<br>
-      gathered from family, colleagues, and organisational units in May 2026.<br>
-      To add a memory or tribute, or to correct any detail, please reach out to the family.
-    </p>
+    <!-- CLOSING -->
+    <div class="closing">
+      <p class="compiled">
+        This page was compiled from tributes, press notices, and ceremony information<br>
+        gathered from family, colleagues, and organisational units in May 2026.<br>
+        To add a memory or tribute, or to correct any detail, please reach out to the family.
+      </p>
+    </div>
+
   </div>
 
-</div>
-
-<footer>
-  In memory of Sri. K. Sreenivasan &nbsp;·&nbsp; 1941–2026 &nbsp;·&nbsp; ആദരാഞ്ജലികൾ
-</footer>
+  <footer>
+    In memory of Sri. K. Sreenivasan &nbsp;·&nbsp; 1941–2026 &nbsp;·&nbsp; ആദരാഞ്ജലികൾ
+  </footer>
 
 </body>
+
 </html>
