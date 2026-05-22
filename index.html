@@ -321,7 +321,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#condolence">Condolence</a></li>
     <li><a href="#poem">Poem</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#memories">Memories</a></li>
+    <li><a href="#events">Events</a></li>
     <li><a href="#tributes">Tributes</a></li>
   </ul>
 </nav>
@@ -427,9 +428,14 @@
 
   <!-- TRIBUTES -->
   <!-- GALLERY -->
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid" id="gallery-grid"></div>
+  <section id="memories">
+    <h2>Cherished Memories</h2>
+    <div class="gallery-grid" id="gallery-memories"></div>
+  </section>
+
+  <section id="events">
+    <h2>Memorial Events</h2>
+    <div class="gallery-grid" id="gallery-events"></div>
   </section>
   <script>
     (async () => {
@@ -467,23 +473,6 @@
         return null;
       }
 
-      let entries;
-      try { entries = await fetch('images/gallery.json').then(r => r.json()); }
-      catch { return; }
-
-      const grid = document.getElementById('gallery-grid');
-      const items = await Promise.all(entries.map(async entry => {
-        const name = typeof entry === 'string' ? entry : entry.src;
-        const jsonCaption = typeof entry === 'object' ? entry.caption : null;
-        try {
-          const buf = await fetch('images/' + name).then(r => r.arrayBuffer());
-          const exif = readExifDescription(buf);
-          const caption = jsonCaption || exif || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
-          const url = URL.createObjectURL(new Blob([buf], { type: 'image/jpeg' }));
-          return { url, caption };
-        } catch { return null; }
-      }));
-
       // Build lightbox
       const lb = document.createElement('div');
       lb.id = 'lightbox'; lb.className = 'hidden';
@@ -497,28 +486,48 @@
       document.getElementById('lightbox-close').addEventListener('click', closeLb);
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-      items.forEach(item => {
-        if (!item) return;
-        const fig = document.createElement('figure');
-        fig.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = item.url;
-        img.alt = item.caption || 'Photo of Sri. K. Sreenivasan';
-        fig.appendChild(img);
-        fig.addEventListener('click', () => {
-          lbImg.src = item.url;
-          lbImg.alt = img.alt;
-          lbCap.innerHTML = item.caption
-            ? item.caption
-                .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                .replace(/\*(.+?)\*/g,'<strong>$1</strong>')
-                .replace(/\n/g,'<br>')
-            : '';
-          lbCap.style.display = item.caption ? '' : 'none';
-          lb.classList.remove('hidden');
+      async function renderGallery(folder, gridId) {
+        let entries;
+        try { entries = await fetch(folder + '/gallery.json').then(r => r.json()); }
+        catch { return; }
+        const grid = document.getElementById(gridId);
+        const items = await Promise.all(entries.map(async entry => {
+          const name = typeof entry === 'string' ? entry : entry.src;
+          const jsonCaption = typeof entry === 'object' ? entry.caption : null;
+          try {
+            const buf = await fetch(folder + '/' + name).then(r => r.arrayBuffer());
+            const exif = readExifDescription(buf);
+            const caption = jsonCaption || exif || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
+            const url = URL.createObjectURL(new Blob([buf], { type: 'image/jpeg' }));
+            return { url, caption };
+          } catch { return null; }
+        }));
+        items.forEach(item => {
+          if (!item) return;
+          const fig = document.createElement('figure');
+          fig.className = 'gallery-item';
+          const img = document.createElement('img');
+          img.src = item.url;
+          img.alt = item.caption || 'Photo of Sri. K. Sreenivasan';
+          fig.appendChild(img);
+          fig.addEventListener('click', () => {
+            lbImg.src = item.url;
+            lbImg.alt = img.alt;
+            lbCap.innerHTML = item.caption
+              ? item.caption
+                  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                  .replace(/\*(.+?)\*/g,'<strong>$1</strong>')
+                  .replace(/\n/g,'<br>')
+              : '';
+            lbCap.style.display = item.caption ? '' : 'none';
+            lb.classList.remove('hidden');
+          });
+          grid.appendChild(fig);
         });
-        grid.appendChild(fig);
-      });
+      }
+
+      renderGallery('images/memories', 'gallery-memories');
+      renderGallery('images/events', 'gallery-events');
     })();
   </script>
 
