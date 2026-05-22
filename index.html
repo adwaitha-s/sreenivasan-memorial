@@ -466,16 +466,18 @@
         return null;
       }
 
-      let filenames;
-      try { filenames = await fetch('images/gallery.json').then(r => r.json()); }
+      let entries;
+      try { entries = await fetch('images/gallery.json').then(r => r.json()); }
       catch { return; }
 
       const grid = document.getElementById('gallery-grid');
-      const items = await Promise.all(filenames.map(async name => {
+      const items = await Promise.all(entries.map(async entry => {
+        const name = typeof entry === 'string' ? entry : entry.src;
+        const jsonCaption = typeof entry === 'object' ? entry.caption : null;
         try {
           const buf = await fetch('images/' + name).then(r => r.arrayBuffer());
           const exif = readExifDescription(buf);
-          const caption = exif || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
+          const caption = jsonCaption || exif || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
           const url = URL.createObjectURL(new Blob([buf], { type: 'image/jpeg' }));
           return { url, caption };
         } catch { return null; }
