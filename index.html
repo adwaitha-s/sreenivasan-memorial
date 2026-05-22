@@ -443,7 +443,7 @@
         try {
           const buf = await fetch('images/' + name).then(r => r.arrayBuffer());
           const exif = readExifDescription(buf);
-          const caption = exif || name.replace(/\.[^.]+$/, '');
+          const caption = exif || (name.startsWith('NC') ? null : name.replace(/\.[^.]+$/, ''));
           const url = URL.createObjectURL(new Blob([buf], { type: 'image/jpeg' }));
           return { url, caption };
         } catch { return null; }
