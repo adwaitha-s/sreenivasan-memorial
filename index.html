@@ -508,7 +508,12 @@
         fig.addEventListener('click', () => {
           lbImg.src = item.url;
           lbImg.alt = img.alt;
-          lbCap.textContent = item.caption || '';
+          lbCap.innerHTML = item.caption
+            ? item.caption
+                .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                .replace(/\*(.+?)\*/g,'<strong>$1</strong>')
+                .replace(/\n/g,'<br>')
+            : '';
           lbCap.style.display = item.caption ? '' : 'none';
           lb.classList.remove('hidden');
         });
